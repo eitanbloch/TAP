@@ -51,7 +51,7 @@ public:
      *
      * @param p The pair of doubles to construct the TimeRewardPair from.
      */
-    TimeRewardPair(const pair<double, double>& p) : time(p.first), reward(p.second) {} // TODO: check usage
+    TimeRewardPair(const pair<double, double>& p) : time(p.first), reward(p.second) {}
 
     bool operator==(const TimeRewardPair& other) const {
         return time == other.time && reward == other.reward;
