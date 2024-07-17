@@ -16,7 +16,7 @@ public:
      * @param graph_size The number of vertices in the graph.
      */
     explicit ValueHistory(size_t graph_size) {
-        for (int i = 0; i < graph_size; i++) {
+        for (int i = 0; i < int(graph_size); i++) {
             value_history.push_back(vector<double>({-2 * EPS}));
         }
     }

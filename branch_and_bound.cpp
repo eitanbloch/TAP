@@ -2,9 +2,10 @@
 
 BranchAndBound::BranchAndBound(Graph& graph, Intervals& intervals, double previous_max, double eps,
                                double max_interval_size) : OPTP(graph, intervals),
-                                                           bound(GraphBoundWrapper(graph, intervals)),
-                                                           value_history(graph.size()), eps(eps),
+                                                           eps(eps),
                                                            max_interval_size(max_interval_size),
+                                                           bound(GraphBoundWrapper(graph, intervals)),
+                                                           value_history(graph.size()),
                                                            dummy_vertex((int) graph.size()) {
 
     // update max value

@@ -88,7 +88,7 @@ double OTP(Path& path, Intervals& intervals) {
 
             // iterate over all entry times
             double max_reward = 0;
-            for (int i = next_start; i < Entry->size(); i++) {
+            for (unsigned int i = next_start; i < Entry->size(); i++) {
                 auto& entry = Entry->at(i);
                 if (entry.time + min_time_at_vertex > exit_time + EPS) // entry time is too late for exit time
                     break;
@@ -157,7 +157,7 @@ pair<double, PairList *> updatedOTP(Path& path, Intervals& intervals) {
 
         // bound related variables
         auto current_intervals = intervals[edge.u];
-        int bound_interval_index = 0;
+        unsigned int bound_interval_index = 0;
         // ignore unreachable intervals
         while (bound_interval_index < current_intervals.size() &&
                current_intervals[bound_interval_index].end < dist_to_vertex)
@@ -169,8 +169,8 @@ pair<double, PairList *> updatedOTP(Path& path, Intervals& intervals) {
             exit_time += dist_to_vertex; // convert to CTi
 
             // iterate over all entry times
-            double max_reward = 0, max_reward2 = 0;
-            for (int i = next_start; i < Entry->size(); i++) {
+            double max_reward = 0;
+            for (unsigned int i = next_start; i < Entry->size(); i++) {
                 auto& entry = Entry->at(i);
                 if (entry.time + min_time_at_vertex > exit_time + EPS) // entry time is too late for exit time
                     break;
@@ -200,7 +200,7 @@ pair<double, PairList *> updatedOTP(Path& path, Intervals& intervals) {
 
                 // iterate over all entry times
                 max_reward = 0;
-                for (int i = next_start; i < Entry->size(); i++) {
+                for (unsigned int i = next_start; i < Entry->size(); i++) {
                     auto& entry = Entry->at(i);
                     if (entry.time > exit_time + EPS) // computed without adding min_time_at_vertex (see footnote at Appendix C of the paper)
                         break;
@@ -218,7 +218,7 @@ pair<double, PairList *> updatedOTP(Path& path, Intervals& intervals) {
                 // iterate over all possible entry times
                 max_reward = 0;
 
-                for (int i = next_start; i < Entry->size(); i++) {
+                for (unsigned int i = next_start; i < Entry->size(); i++) {
                     auto& entry = Entry->at(i);
                     if (entry.time > exit_time + EPS)
                         break;

@@ -31,14 +31,14 @@ GraphBound::GraphBound(Graph& graph, Intervals& intervals) : graph(graph), inter
 void GraphBound::computeDists() {
     // real distances
     Matrix distances = Matrix(graph.size(), vector<double>(graph.size(), INF));
-    for (int u = 0; u < graph.size(); u++) {
+    for (unsigned int u = 0; u < graph.size(); u++) {
         dijkstra(graph, u, distances[u]);
     }
 
     // distances without half of last edge
     min_dist_no_last = distances;
-    for (int s = 0; s < graph.size(); s++) {
-        for (int u = 0; u < graph.size(); u++) {
+    for (unsigned int s = 0; s < graph.size(); s++) {
+        for (unsigned int u = 0; u < graph.size(); u++) {
             for (auto& edge: graph[u]) {
                 int v = edge.v;
                 double w = edge.w;
@@ -49,9 +49,9 @@ void GraphBound::computeDists() {
 
     // distances without half of first and last edge
     min_dist = min_dist_no_last;
-    for (int u = 0; u < graph.size(); u++) {
+    for (unsigned int u = 0; u < graph.size(); u++) {
         for (auto& edge: graph[u]) {
-            for (int t = 0; t < graph.size(); t++) {
+            for (unsigned int t = 0; t < graph.size(); t++) {
                 int v = edge.v;
                 double w = edge.w;
                 min_dist[u][t] = min(min_dist[u][t], min_dist_no_last[v][t] + w / 2);
@@ -60,7 +60,7 @@ void GraphBound::computeDists() {
     }
 
     // set distances to 0 for all edges
-    for (int u = 0; u < graph.size(); u++) {
+    for (unsigned int u = 0; u < graph.size(); u++) {
         for (auto edge: graph[u])
             min_dist[u][edge.v] = 0;
     }
@@ -69,7 +69,7 @@ void GraphBound::computeDists() {
 void GraphBound::computeUBI() {
     // create list of (interval, vertex) pairs
     vector<VInterval> v_intervals;
-    for (int u = 0; u < intervals.size(); u++) {
+    for (unsigned int u = 0; u < intervals.size(); u++) {
         for (auto& interval: intervals[u]) {
             v_intervals.emplace_back(u, interval);
         }
@@ -132,7 +132,7 @@ double GraphBound::UB(int u, double time) {
 
 GraphBoundWrapper::GraphBoundWrapper(Graph& graph, Intervals& intervals) : bound(graph, intervals) {
     // initialize cache
-    for (int u = 0; u < graph.size(); u++) {
+    for (unsigned int u = 0; u < graph.size(); u++) {
         cache[u] = PairSet();
     }
 }
