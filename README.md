@@ -27,7 +27,7 @@ You can run the code by running the following command:
 
 ## Using in Python (python_interface branch)
 
-1. Set the Python executable in the PYTHON variable in the make file
+1. Set the Python executable in the PYTHON variable in the make file (the pybind11 package must be accessible)
 2. Make using:
 
 ```bash
