@@ -25,3 +25,14 @@ You can run the code by running the following command:
 ./TAP
 ```
 
+## Using in Python (python_interface branch)
+
+1. Set the Python executable in the PYTHON variable in the make file
+2. Make using:
+
+```bash
+make MODE=py
+```
+
+3. In order to use in python, make sure BranchAndBound.*.so is in a directory appears in PYTHONPATH
+4. run the code in the example.py
